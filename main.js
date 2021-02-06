@@ -3,14 +3,19 @@ const app = {
         return{
             flagForErrorMessage: false,
             note: "",
-            notes: []
+            notes: [],
+        }
+    },
+    computed: {
+        remainingNoteAmount(){
+            return this.notes.length;
         }
     },
     methods: {
         printToConsole(){
             console.log(this.note)
         },
-        processNote(){
+        processNote(press){
             if(this.note !=""){
                 this.notes.push(this.note);
                 this.note = "";
@@ -33,6 +38,9 @@ const app = {
         },
         removeElement(index){
             this.notes.splice(index, 1);
+        },
+        newline(){
+            this.note = this.note + "\n";
         }
     }
 }

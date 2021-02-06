@@ -24,13 +24,23 @@
             </div>
 
             <div class="mb-3 mt-3">
+                <p>
+                    Remaining Note(s): {{ remainingNoteAmount }} 
+                </p>
+
+            </div>
+
+            <div class="mb-3 mt-3">
                 <label for="notesEnter" class="form-label">Enter Your Notes:</label>
                 <textarea 
                     class="form-control" 
                     id="notesEnter" 
                     rows="2" 
                     placeholder="Type here."
-                    v-model="note">
+                    v-model="note"
+                    @keydown.enter.prevent
+                    @keyup.enter.exact="processNote"
+                    @keyup.shift.enter="newline">
                 </textarea>
                 
             </div>
